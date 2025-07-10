@@ -1,14 +1,10 @@
-import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/Store'
 import { JSX, useState } from 'react'
 import { FaDollarSign, FaEye, FaUserCircle } from 'react-icons/fa'
-
 import { useFilterData } from '@renderer/hooks/useFilterData'
 import Searchbar from '@renderer/components/searchbar/Searchbar'
 import { userData } from '@renderer/data/Userdata'
 
 function UtilisateurPage(): JSX.Element {
-  const closeBar = useSelector((state: RootState) => state.activeLink.closeBar)
   const [searchuser, setsearchuser] = useState('')
   const handlesearchuser = (dataeleve: string) => {
     setsearchuser(dataeleve)

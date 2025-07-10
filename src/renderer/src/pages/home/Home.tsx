@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/Store'
 import Sidebar from '../../layout/sidebar/Sidebar'

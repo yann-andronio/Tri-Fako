@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setActiveName } from '@renderer/redux/slice/activeLinkSlice'
 import { RootState } from '@renderer/redux/Store'
 import { Link } from 'react-router-dom'
-import { LuLayoutDashboard, LuGraduationCap, LuUser } from 'react-icons/lu'
-import { MdWorkOutline, MdSettings, MdHistory } from 'react-icons/md'
+import { LuLayoutDashboard, LuUser } from 'react-icons/lu'
+import { MdSettings, MdHistory } from 'react-icons/md'
 import { FiLogOut } from 'react-icons/fi'
 
 interface Menu {
