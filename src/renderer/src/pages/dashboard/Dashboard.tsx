@@ -1,17 +1,14 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/Store'
 import { JSX, useState } from 'react'
-import {  FiMapPin,  } from 'react-icons/fi'
 import { FaUserFriends, FaEye, FaUserCircle } from 'react-icons/fa'
 import {  GiFruitBowl , GiCardboardBox  } from 'react-icons/gi'
 import { FaRecycle } from 'react-icons/fa'
 import { useFilterData } from '@renderer/hooks/useFilterData'
 // import Searchbar from '@renderer/components/searchbar/Searchbar'
 import { userData } from '@renderer/data/Userdata'
-import { Chart } from 'chart.js/auto'
 import DonutChart from '@renderer/components/donutchart/Donutchart'
 import Mapinteractive from '@renderer/components/mapinteractive/Mapinteractive'
-import CalendarSection from '@renderer/components/calendarsection/Calendarsection'
 import Tendancechartbymonth from '@renderer/components/tendancechartbymonth/Tendancechartbymonth'
 
 type CardData = {
@@ -32,11 +29,11 @@ const cardsData: CardData[] = [
 
 function Dashboard(): JSX.Element {
   const closeBar = useSelector((state: RootState) => state.activeLink.closeBar)
-  const [searcheleves] = useState('')
+  const [searchuser] = useState('')
   //  const handleSearcheleves = (dataeleve: string) => {
   //    setSearcheleves(dataeleve)
   //  }
-  const filtereEleves = useFilterData(userData, searcheleves, ['nom', 'prenom'])
+  const filtereusers = useFilterData(userData, searchuser, ['nom', 'prenom'])
   
   
 
@@ -86,12 +83,12 @@ function Dashboard(): JSX.Element {
             </div>
 
             <div className="space-y-2 mt-2 max-h-64 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-gray-300">
-              {filtereEleves.length === 0 ? (
+              {filtereusers.length === 0 ? (
                 <div className="text-center py-6 text-gray-500 text-sm">
                   Aucun utilisateur trouvé
                 </div>
               ) : (
-                filtereEleves.slice(0, 4).map((student, index) => (
+                filtereusers.slice(0, 4).map((student, index) => (
                   <div
                     key={index}
                     className={`flex items-center px-4 py-2 rounded-lg text-sm ${

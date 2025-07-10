@@ -6,7 +6,7 @@ import Navbar from '@renderer/layout/navbar/Navbar'
 import { JSX,  } from 'react'
 
 function Home(): JSX.Element {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const closeBar = useSelector((state: RootState) => state.activeLink.closeBar)
 
   return (

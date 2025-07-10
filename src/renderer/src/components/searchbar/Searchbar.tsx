@@ -1,41 +1,26 @@
 import { Fragment } from 'react'
 import { IoSearchSharp } from 'react-icons/io5'
-import { FiFilter } from 'react-icons/fi'
 
 type SearchBarProps = {
   onSearch: (searchCategorie: string) => void
-  onfilter?: () => void
 }
 
-
-const Searchbar: React.FC<SearchBarProps> = ({ onSearch , onfilter }) => {
+const Searchbar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(event.target.value)
   }
 
   return (
     <Fragment>
-      <div className="boxparents bg-white w-[40%] rounded-lg relative px-4 py-2 shadow-md">
-        <div className="flex flex-col sm:flex-row sm:justify-between gap-4 sm:gap-0 pr-40">
-          <div className="search flex items-center gap-2 px-3 py-2 bg-[#E6E6FA] rounded-lg w-full sm:w-auto">
-            <IoSearchSharp size={20} className="text-gray-600" />
-            <input
-              type="text"
-              placeholder="Recherche..."
-              className="bg-[#E6E6FA] focus:outline-none text-gray-700 w-full sm:w-auto"
-              onChange={handleSearchChange}
-            />
-          </div>
-        </div>
-
-        <div className="filter">
-          <button
-            onClick={() => onfilter && onfilter()}
-            className="absolute top-[15%] right-2 p-2 rounded-lg w-[20%] flex items-center justify-center gap-2 shadow-lg bg-[#895256] text-white hover:bg-[#733935] transition duration-200"
-          >
-            <FiFilter size={18} />
-            Filtrer
-          </button>
+      <div className="bg-white w-full max-w-md rounded-lg relative px-4 py-2 shadow-md mx-auto">
+        <div className="flex items-center gap-3 bg-[#E6F0DA] rounded-lg px-4 py-2">
+          <IoSearchSharp size={22} className="text-[#2F855A]" />
+          <input
+            type="text"
+            placeholder="Recherche..."
+            className="bg-transparent focus:outline-none text-[#2F855A] placeholder:text-[#799464] w-full text-base"
+            onChange={handleSearchChange}
+          />
         </div>
       </div>
     </Fragment>

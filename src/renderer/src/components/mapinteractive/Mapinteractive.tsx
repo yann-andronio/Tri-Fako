@@ -86,7 +86,7 @@ function Mapinteractive(): JSX.Element {
                   </div>
                   <button
                     onClick={(e) => {
-                      e.stopPropagation() // Empêche d’ouvrir le modal
+                      e.stopPropagation() 
                       removeMarker(marker.id)
                     }}
                     className="mt-2 px-3 py-1 text-white bg-red-500 hover:bg-red-600 rounded"
@@ -101,8 +101,14 @@ function Mapinteractive(): JSX.Element {
 
         {/* Modal d'entrée de ville */}
         {showModal && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 z-10">
-            <div className="bg-white rounded-lg p-6 shadow-xl w-[90%] max-w-md">
+          <div className="absolute inset-0 flex items-center justify-center bg-[#2F855A] bg-opacity-40 z-10">
+            <form
+              className="bg-white rounded-lg p-6 shadow-xl w-[90%] max-w-md"
+              onClick={(e) => {
+                e.preventDefault()
+                handleAddMarker()
+              }}
+            >
               <h3 className="text-lg font-semibold text-[#2F855A] mb-3">Nom de la ville</h3>
               <input
                 type="text"
@@ -111,7 +117,7 @@ function Mapinteractive(): JSX.Element {
                 value={cityInput}
                 onChange={(e) => setCityInput(e.target.value)}
               />
-              <div className="flex justify-end gap-3 mt-4">
+              <div className="flex cursor-pointer justify-end gap-3 mt-4">
                 <button
                   className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
                   onClick={() => {
@@ -123,13 +129,13 @@ function Mapinteractive(): JSX.Element {
                   Annuler
                 </button>
                 <button
-                  className="px-4 py-2 bg-[#2F855A] text-white rounded hover:bg-green-700"
-                  onClick={handleAddMarker}
+                  type="submit"
+                  className="px-4 py-2 bg-[#2F855A] cursor-pointer text-white rounded hover:bg-green-700"
                 >
                   Ajouter
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         )}
       </div>

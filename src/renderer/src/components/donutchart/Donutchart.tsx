@@ -66,13 +66,12 @@ const DonutChart: React.FC = () => {
 
       <div className="relative w-full h-56 mx-auto flex">
         <canvas ref={chartRef}></canvas>
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0">
           <span className="text-3xl font-bold text-[#2F855A]">{totalDechets}</span>
           <span className="text-sm text-gray-500 mt-1">Total déchets</span>
         </div>
       </div>
 
-      {/* Légende */}
       <div className="mt-8 flex justify-around font-medium text-sm select-none">
         <div className="flex items-center gap-2 text-[#2F855A]">
           <span className="block w-4 h-4 rounded-full bg-[#2F855A]"></span> Organique:{' '}

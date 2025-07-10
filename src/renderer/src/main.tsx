@@ -15,6 +15,7 @@ import Login from './auth/login/Login'
 import Register from './auth/register/Registe'
 import Home from './pages/home/Home'
 import Dashboard from './pages/dashboard/Dashboard'
+import UtilisateurPage from './pages/utilisateurs/UtilisateurPage'
 
 const route = createBrowserRouter([
   {
@@ -40,7 +41,10 @@ const route = createBrowserRouter([
         index: true,
         element: <Dashboard />
       },
-    
+      {
+        path: '/home/utilisateur',
+        element: <UtilisateurPage />
+      }
     ]
   }
 ])

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setActiveName } from '@renderer/redux/slice/activeLinkSlice'
 import { RootState } from '@renderer/redux/Store'
 import { Link } from 'react-router-dom'
-import { LuLayoutDashboard, LuGraduationCap } from 'react-icons/lu'
-import { MdWorkOutline, MdSettings } from 'react-icons/md'
+import { LuLayoutDashboard, LuGraduationCap, LuUser } from 'react-icons/lu'
+import { MdWorkOutline, MdSettings, MdHistory } from 'react-icons/md'
 import { FiLogOut } from 'react-icons/fi'
 
 interface Menu {
@@ -27,14 +27,14 @@ const Sidebar: React.FC = () => {
       icon: <LuLayoutDashboard size={25} />
     },
     {
-      name: 'Elèves',
-      path: '/eleves',
-      icon: <LuGraduationCap size={25} />
+      name: 'Utilisateurs',
+      path: '/home/utilisateur',
+      icon: <LuUser size={25} />
     },
     {
-      name: 'Employés',
-      path: '/employe',
-      icon: <MdWorkOutline size={25} />
+      name: 'Historiques',
+      path: '/home/historique',
+      icon: <MdHistory size={25} />
     }
   ]
 
