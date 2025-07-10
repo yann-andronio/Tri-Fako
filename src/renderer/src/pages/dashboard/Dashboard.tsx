@@ -6,7 +6,7 @@ import { FaUserFriends, FaEye, FaUserCircle } from 'react-icons/fa'
 import {  GiFruitBowl , GiCardboardBox  } from 'react-icons/gi'
 import { FaRecycle } from 'react-icons/fa'
 import { useFilterData } from '@renderer/hooks/useFilterData'
-import Searchbar from '@renderer/components/searchbar/Searchbar'
+// import Searchbar from '@renderer/components/searchbar/Searchbar'
 import { userData } from '@renderer/data/Userdata'
 
 type CardData = {
@@ -30,19 +30,16 @@ const cardsData: CardData[] = [
 
 function Dashboard(): JSX.Element {
   const closeBar = useSelector((state: RootState) => state.activeLink.closeBar)
-  const [searcheleves, setSearcheleves] = useState('')
-   const handleSearcheleves = (dataeleve: string) => {
-     setSearcheleves(dataeleve)
-   }
+  const [searcheleves] = useState('')
+  //  const handleSearcheleves = (dataeleve: string) => {
+  //    setSearcheleves(dataeleve)
+  //  }
   const filtereEleves = useFilterData(userData, searcheleves, ['nom', 'prenom'])
   
 
 
   return (
-    <div
-      className={`Rigth bg-[#E6E6FA] w-[100%]  pl-8 pt-4 ${closeBar ? '' : ''} transition-all duration-[600ms] ease-in-out`}
-    >
-      {/* <Searchbar onSearch={handleSearcheleves} /> */}
+    <div className={`Rigth bg-[#E6E6FA] w-[100%]  pl-8 pt-4 ${closeBar ? '' : ''} transition-all duration-[600ms] ease-in-out`} >
       <div className="p-9">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 ">
           {cardsData.map((item, index) => (
@@ -79,12 +76,10 @@ function Dashboard(): JSX.Element {
           </div>
 
           <div className="relative bg-white rounded-xl p-4 shadow-sm border border-gray-200 ">
-            {/* Titre */}
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-[#2F855A]">Utilisateurs connectés</h2>
             </div>
 
-            {/* En-tête du tableau */}
             <div className="hidden md:flex text-sm bg-[#2F855A] text-white px-4 py-2 rounded-md font-semibold">
               <div className="w-16">Photo</div>
               <div className="flex-1">Nom</div>
@@ -93,7 +88,6 @@ function Dashboard(): JSX.Element {
               <div className="w-10 text-center">Voir</div>
             </div>
 
-            {/* Liste des utilisateurs */}
             <div className="space-y-2 mt-2 max-h-64 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-gray-300">
               {filtereEleves.length === 0 ? (
                 <div className="text-center py-6 text-gray-500 text-sm">
@@ -107,19 +101,16 @@ function Dashboard(): JSX.Element {
                       index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
                     } hover:bg-green-50 border-l-2 border-transparent hover:border-[#2F855A] transition-all duration-300`}
                   >
-                    {/* Avatar */}
                     <div className="w-16 flex items-center justify-start">
                       <div className="bg-[#2F855A] p-1.5 rounded-full">
                         <FaUserCircle className="text-2xl text-white" />
                       </div>
                     </div>
 
-                    {/* Infos */}
                     <div className="flex-1 font-medium text-gray-800 truncate">{student.nom}</div>
                     <div className="flex-1 text-gray-700 truncate">{student.prenom}</div>
                     <div className="flex-1 text-gray-600 truncate ">{student.dechets}</div>
 
-                    {/* Action */}
                     <div className="w-10 text-center text-[#9f7126]">
                       <FaEye className="cursor-pointer hover:text-black transition mx-auto w-fit" />
                     </div>
