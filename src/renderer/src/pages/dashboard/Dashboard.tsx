@@ -8,6 +8,11 @@ import { FaRecycle } from 'react-icons/fa'
 import { useFilterData } from '@renderer/hooks/useFilterData'
 // import Searchbar from '@renderer/components/searchbar/Searchbar'
 import { userData } from '@renderer/data/Userdata'
+import { Chart } from 'chart.js/auto'
+import DonutChart from '@renderer/components/donutchart/Donutchart'
+import Mapinteractive from '@renderer/components/mapinteractive/Mapinteractive'
+import CalendarSection from '@renderer/components/calendarsection/Calendarsection'
+import Tendancechartbymonth from '@renderer/components/tendancechartbymonth/Tendancechartbymonth'
 
 type CardData = {
   title: string
@@ -15,9 +20,6 @@ type CardData = {
   icon: JSX.Element
   gradient: string
 }
-
-
-
 
 
 const cardsData: CardData[] = [
@@ -36,10 +38,13 @@ function Dashboard(): JSX.Element {
   //  }
   const filtereEleves = useFilterData(userData, searcheleves, ['nom', 'prenom'])
   
+  
 
 
   return (
-    <div className={`Rigth bg-[#E6E6FA] w-[100%]  pl-8 pt-4 ${closeBar ? '' : ''} transition-all duration-[600ms] ease-in-out`} >
+    <div
+      className={`Rigth bg-[#E6E6FA] w-[100%]  pl-8 pt-4 ${closeBar ? '' : ''} transition-all duration-[600ms] ease-in-out`}
+    >
       <div className="p-9">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 ">
           {cardsData.map((item, index) => (
@@ -65,15 +70,7 @@ function Dashboard(): JSX.Element {
         </div>
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white p-6 rounded-2xl shadow-lg">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold text-[#2F855A]">Emplacement des poubelles</h2>
-              <FiMapPin className="text-[#2F855A]" size={24} />
-            </div>
-            <div className="bg-gray-200 h-64 rounded-xl flex items-center justify-center text-gray-500">
-              🗺️ Carte interactive à venir
-            </div>
-          </div>
+          <DonutChart />
 
           <div className="relative bg-white rounded-xl p-4 shadow-sm border border-gray-200 ">
             <div className="flex items-center justify-between mb-4">
@@ -119,10 +116,18 @@ function Dashboard(): JSX.Element {
               )}
             </div>
           </div>
+          <div className="map mt-9">
+            <Mapinteractive />
+          </div>
+          <div className="map mt-9">
+            <Tendancechartbymonth />
+          </div>
+
+        
         </div>
       </div>
 
-      {/* <TestMap/> */}
+      <div></div>
     </div>
   )
 }

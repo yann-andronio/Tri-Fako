@@ -1,0 +1,19 @@
+.react-calendar {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+}
+
+
+
+.react-calendar__tile abbr {
+    font-weight: bold;
+}
+.react-calendar__tile {
+    position: relative;
+    overflow: visible;
+    z-index: 0;
+    transition: background 0.3s ease;
+}
