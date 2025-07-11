@@ -7,10 +7,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Store from './redux/Store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistor } from './redux/Store'
-
-
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import Login from './auth/login/Login'
 import Register from './auth/register/Registe'
 import Home from './pages/home/Home'
