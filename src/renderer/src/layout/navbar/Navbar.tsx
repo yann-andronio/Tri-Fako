@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
   const dispatch = useDispatch()
   const activeName = useSelector((state: RootState) => state.activeLink.activeName)
   const user = useSelector((state: RootState) => state.user)
+  console.log("user dans Navbar:", user);
 
   return (
     <header className="w-full px-6 py-3 flex justify-between items-center bg-white shadow-md border-b border-gray-100">
@@ -30,7 +31,6 @@ const Navbar: React.FC = () => {
 
         <div className="flex flex-col">
           <span className="text-sm font-medium text-gray-800">{user.name}</span>
-          <span className="text-xs text-gray-500">{user.role}</span>
         </div>
       </div>
     </header>

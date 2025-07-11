@@ -1,18 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+
+type  UserState ={
+  name: string
+}
 // mila alagna reto @finition
-const initialState = {
-  name: 'luca',
-  role: 'Secrétaire'
+const initialState:UserState = {
+  name: '',
 }
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<{ name: string; role: string }>) => {
-      state.name = action.payload.name
-      state.role = action.payload.role
+    setUser: (state, action: PayloadAction<{ name: string }>) => {
+      state.name = String(action.payload.name)
     }
   }
 })

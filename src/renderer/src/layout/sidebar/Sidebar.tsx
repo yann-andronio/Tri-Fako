@@ -1,4 +1,4 @@
-import { useState, useEffect, JSX } from 'react'
+import { useState, useEffect, JSX, ReactNode } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActiveName } from '@renderer/redux/slice/activeLinkSlice'
 import { RootState } from '@renderer/redux/Store'
@@ -10,7 +10,7 @@ import { FiLogOut } from 'react-icons/fi'
 interface Menu {
   name: string
   path?: string
-  icon: JSX.Element
+  icon: ReactNode
 }
 
 const Sidebar: React.FC = () => {

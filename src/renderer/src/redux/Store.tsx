@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage'
 import activeLinkReducer from './slice/activeLinkSlice'
 import userReducer from './slice/userSlice'
 
+
 const activeLinkPersistConfig = {
   key: 'activeLink',
   storage,
@@ -13,7 +14,7 @@ const activeLinkPersistConfig = {
 const userPersistConfig = {
   key: 'user',
   storage,
-  whitelist: ['name', 'role']
+  whitelist: ['name']
 }
 
 const persistedActiveLinkReducer = persistReducer(activeLinkPersistConfig, activeLinkReducer)
@@ -22,7 +23,6 @@ const persistedUserReducer = persistReducer(userPersistConfig, userReducer)
 const Store = configureStore({
   reducer: {
     activeLink: persistedActiveLinkReducer,
-    // activeLink: activeLinkReducer,
     user: persistedUserReducer
   },
   middleware: (getDefaultMiddleware) =>
@@ -38,3 +38,4 @@ export type AppDispatch = typeof Store.dispatch
 
 export const persistor = persistStore(Store)
 export default Store
+

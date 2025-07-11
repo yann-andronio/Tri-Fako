@@ -88,7 +88,7 @@ function Dashboard(): JSX.Element {
                   Aucun utilisateur trouvé
                 </div>
               ) : (
-                filtereusers.slice(0, 4).map((student, index) => (
+                filtereusers.slice(0, 4).map((users, index) => (
                   <div
                     key={index}
                     className={`flex items-center px-4 py-2 rounded-lg text-sm ${
@@ -101,9 +101,9 @@ function Dashboard(): JSX.Element {
                       </div>
                     </div>
 
-                    <div className="flex-1 font-medium text-gray-800 truncate">{student.nom}</div>
-                    <div className="flex-1 text-gray-700 truncate">{student.prenom}</div>
-                    <div className="flex-1 text-gray-600 truncate ">{student.dechets}</div>
+                    <div className="flex-1 font-medium text-gray-800 truncate">{users.nom}</div>
+                    <div className="flex-1 text-gray-700 truncate">{users.prenom}</div>
+                    <div className="flex-1 text-gray-600 truncate ">{users.dechets}</div>
 
                     <div className="w-10 text-center text-[#9f7126]">
                       <FaEye className="cursor-pointer hover:text-black transition mx-auto w-fit" />
