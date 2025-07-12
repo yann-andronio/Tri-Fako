@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="flex flex-col">
-          <span className="text-sm font-medium text-gray-800">{user.name}</span>
+          <span className="text-sm font-medium text-gray-800">{user.name ? user.name : "utilisateur"}</span>
         </div>
       </div>
     </header>

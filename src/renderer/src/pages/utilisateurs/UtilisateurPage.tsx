@@ -3,13 +3,23 @@ import { FaDollarSign, FaEye, FaUserCircle } from 'react-icons/fa'
 import { useFilterData } from '@renderer/hooks/useFilterData'
 import Searchbar from '@renderer/components/searchbar/Searchbar'
 import { userData } from '@renderer/data/Userdata'
+import Moduleinfouse from '@renderer/components/Moduleinfouser/Moduleinfouse'
+import { User } from '@renderer/data/Userdata'
 
 function UtilisateurPage(): JSX.Element {
   const [searchuser, setsearchuser] = useState('')
-  const handlesearchuser = (dataeleve: string) => {
-    setsearchuser(dataeleve)
+  const handlesearchuser = (datauser: string) => {
+    setsearchuser(datauser)
   }
   const filtereusers = useFilterData(userData, searchuser, ['nom', 'prenom'])
+  const [selecteduser, setSelecteduser] = useState(null)
+    const handleViewUser = (user) => {
+      setSelecteduser(user)
+    }
+
+    const handleCloseModule = () => {
+      setSelecteduser(null)
+    }
 
   return (
     <div
@@ -73,7 +83,10 @@ function UtilisateurPage(): JSX.Element {
                   </div>
 
                   <div className="w-20 flex items-center justify-center text-[#9f7126]">
-                    <FaEye className="cursor-pointer hover:text-black transition" />
+                    <FaEye
+                      onClick={() => handleViewUser(users)}
+                      className="cursor-pointer hover:text-black transition"
+                    />
                   </div>
 
                   <div className="w-28 m-auto h-10 flex items-center  px-12  hover:text-[#ffffff]  text-[#2F855A] hover:bg-[#276749] rounded-lg shadow-md cursor-pointer  transition-colors duration-300">
@@ -85,6 +98,8 @@ function UtilisateurPage(): JSX.Element {
           </div>
         </div>
       </div>
+
+      {selecteduser && <Moduleinfouse user={selecteduser} onClose={handleCloseModule} />}
     </div>
   )
 }

@@ -2,10 +2,12 @@ import { useState, useEffect, JSX, ReactNode } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActiveName } from '@renderer/redux/slice/activeLinkSlice'
 import { RootState } from '@renderer/redux/Store'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { LuLayoutDashboard, LuUser } from 'react-icons/lu'
 import { MdSettings, MdHistory } from 'react-icons/md'
 import { FiLogOut } from 'react-icons/fi'
+import Weathercard from '@renderer/components/weathercard/Weathercard'
+import { useNavigate } from 'react-router-dom'
 
 interface Menu {
   name: string
@@ -19,6 +21,7 @@ const Sidebar: React.FC = () => {
   const dispatch = useDispatch()
   const closeBar = useSelector((state: RootState) => state.activeLink.closeBar)
   const activeName = useSelector((state: RootState) => state.activeLink.activeName)
+  const navigate= useNavigate()
 
   const menus: Menu[] = [
     {
@@ -73,6 +76,10 @@ const Sidebar: React.FC = () => {
             </li>
           ))}
         </ul>
+
+        <div className="mt-28 hidden sm:block lg:block">
+          {!closeBar && <Weathercard />} 
+        </div>
       </div>
 
       <div className="absolute bottom-4 left-0 w-full px-4 space-y-3">
@@ -85,9 +92,9 @@ const Sidebar: React.FC = () => {
           <MdSettings size={22} />
           {!closeBar && <span>Paramètres</span>}
         </Link>
-    
 
         <button
+          onClick={()=>navigate("/")}
           className={` w-full flex items-center gap-3 p-2 bg-white text-[#2F855A] hover:bg-[#276749] hover:text-white rounded-lg shadow-md transition ${
             closeBar ? 'justify-center' : ''
           }`}

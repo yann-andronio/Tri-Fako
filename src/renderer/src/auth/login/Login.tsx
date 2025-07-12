@@ -60,6 +60,7 @@ function Login(): JSX.Element {
               <div className="relative">
                 <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#2F855A]" />
                 <input
+                  autoComplete="username"
                   type="email"
                   className={`w-full pl-10 p-3 border rounded-lg text-black outline-none  bg-white focus:ring-2 focus:ring-[#2F855A] ${
                     errors.email ? 'border-red-400 ' : 'border-gray-300'
@@ -86,8 +87,7 @@ function Login(): JSX.Element {
                   type={showPassword ? 'text' : 'password'}
                   className={`bg-white text-black w-full p-3 pl-10 border rounded-lg focus:ring-2 focus:ring-[#2F855A] outline-none ${
                     errors.password ? 'border-red-400' : 'border-gray-300'
-                    }`}
-                  
+                  }`}
                   placeholder="Votre mot de passe"
                   {...register('password')}
                 />
@@ -126,8 +126,12 @@ function Login(): JSX.Element {
           </form>
         </div>
         <img className="absolute -top-14 rotate-[100deg] -right-10" src={deco2} width={200} />
-        <img className={`absolute -bottom-20 rotate-[190deg] -right-10`} src={deco2} width={225} alt="" />
-      
+        <img
+          className={`absolute -bottom-20 rotate-[190deg] -right-10`}
+          src={deco2}
+          width={225}
+          alt=""
+        />
       </div>
     </div>
   )
