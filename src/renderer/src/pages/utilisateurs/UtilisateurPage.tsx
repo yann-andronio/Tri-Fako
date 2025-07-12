@@ -4,7 +4,6 @@ import { useFilterData } from '@renderer/hooks/useFilterData'
 import Searchbar from '@renderer/components/searchbar/Searchbar'
 import { userData } from '@renderer/data/Userdata'
 import Moduleinfouse from '@renderer/components/Moduleinfouser/Moduleinfouse'
-import { User } from '@renderer/data/Userdata'
 
 function UtilisateurPage(): JSX.Element {
   const [searchuser, setsearchuser] = useState('')
