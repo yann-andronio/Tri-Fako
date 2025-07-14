@@ -44,8 +44,8 @@ function UtilisateurPage(): JSX.Element {
             <div className="w-44 flex items-center pl-2">Email</div>
             <div className="w-36 flex items-center pl-2">Déchet</div>
             <div className="w-36 flex items-center pl-2">Portefeuille</div>
+            <div className="w-36 pl-2 items-center ">Télephone</div>
             <div className="w-20 flex items-center justify-center">Voir</div>
-            <div className="w-28 mx-auto flex items-center justify-center">Actions</div>
           </div>
 
           <div className="space-y-2 mt-2 max-h-80 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-gray-300">
@@ -80,16 +80,15 @@ function UtilisateurPage(): JSX.Element {
                   <div className="w-36 flex items-center pl-2 text-gray-600 truncate">
                     {users.wallet} Ar
                   </div>
+                  <div className="w-36 flex items-center pl-2 text-gray-600 truncate">
+                    {users.telephone}
+                  </div>
 
-                  <div className="w-20 flex items-center justify-center text-[#9f7126]">
+                  <div className="w-20 flex items-center justify-center text-[#2F855A]">
                     <FaEye
                       onClick={() => handleViewUser(users)}
                       className="cursor-pointer hover:text-black transition"
                     />
-                  </div>
-
-                  <div className="w-28 m-auto h-10 flex items-center  px-12  hover:text-[#ffffff]  text-[#2F855A] hover:bg-[#276749] rounded-lg shadow-md cursor-pointer  transition-colors duration-300">
-                    <FaDollarSign className=" text-xl   " />
                   </div>
                 </div>
               ))

@@ -10,6 +10,7 @@ import { userData } from '@renderer/data/Userdata'
 import DonutChart from '@renderer/components/donutchart/Donutchart'
 import Mapinteractive from '@renderer/components/mapinteractive/Mapinteractive'
 import Tendancechartbymonth from '@renderer/components/tendancechartbymonth/Tendancechartbymonth'
+import Moduleinfouse from '@renderer/components/Moduleinfouser/Moduleinfouse'
 
 type CardData = {
   title: string
@@ -30,10 +31,16 @@ const cardsData: CardData[] = [
 function Dashboard(): JSX.Element {
   const closeBar = useSelector((state: RootState) => state.activeLink.closeBar)
   const [searchuser] = useState('')
-  //  const handleSearcheleves = (dataeleve: string) => {
-  //    setSearcheleves(dataeleve)
-  //  }
   const filtereusers = useFilterData(userData, searchuser, ['nom', 'prenom'])
+
+   const [selecteduser, setSelecteduser] = useState(null)
+   const handleViewUser = (user) => {
+     setSelecteduser(user)
+   }
+
+   const handleCloseModule = () => {
+     setSelecteduser(null)
+   }
   
   
 
@@ -71,7 +78,7 @@ function Dashboard(): JSX.Element {
 
           <div className="relative bg-white rounded-xl p-4 shadow-sm border border-gray-200 ">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-[#2F855A]">Utilisateurs connectés</h2>
+              <h2 className="text-lg font-semibold text-[#2F855A]">Liste des administrateurs</h2>
             </div>
 
             <div className="hidden md:flex text-sm bg-[#2F855A] text-white px-4 py-2 rounded-md font-semibold">
@@ -105,8 +112,11 @@ function Dashboard(): JSX.Element {
                     <div className="flex-1 text-gray-700 truncate">{users.prenom}</div>
                     <div className="flex-1 text-gray-600 truncate ">{users.dechets}</div>
 
-                    <div className="w-10 text-center text-[#9f7126]">
-                      <FaEye className="cursor-pointer hover:text-black transition mx-auto w-fit" />
+                    <div className="w-10 text-center text-[#2F855A]">
+                      <FaEye
+                        onClick={() => handleViewUser(users)}
+                        className="cursor-pointer hover:text-black transition mx-auto w-fit"
+                      />
                     </div>
                   </div>
                 ))
@@ -119,12 +129,10 @@ function Dashboard(): JSX.Element {
           <div className="map mt-9">
             <Tendancechartbymonth />
           </div>
-
-        
         </div>
       </div>
 
-      <div></div>
+      {selecteduser && <Moduleinfouse user={selecteduser} onClose={handleCloseModule} />}
     </div>
   )
 }

@@ -2,9 +2,9 @@ import { useState, useEffect, JSX, ReactNode } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActiveName } from '@renderer/redux/slice/activeLinkSlice'
 import { RootState } from '@renderer/redux/Store'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { LuLayoutDashboard, LuUser } from 'react-icons/lu'
-import { MdSettings, MdHistory } from 'react-icons/md'
+import {  MdHistory } from 'react-icons/md'
 import { FiLogOut } from 'react-icons/fi'
 import Weathercard from '@renderer/components/weathercard/Weathercard'
 import { useNavigate } from 'react-router-dom'
@@ -83,7 +83,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       <div className="absolute bottom-4 left-0 w-full px-4 space-y-3">
-        <Link
+        {/* <Link
           to="/settings"
           className={`flex items-center gap-3 p-2 bg-white text-[#2F855A] hover:bg-[#276749] hover:text-white rounded-lg shadow-md transition ${
             closeBar ? 'justify-center' : ''
@@ -91,7 +91,7 @@ const Sidebar: React.FC = () => {
         >
           <MdSettings size={22} />
           {!closeBar && <span>Paramètres</span>}
-        </Link>
+        </Link> */}
 
         <button
           onClick={()=>navigate("/")}

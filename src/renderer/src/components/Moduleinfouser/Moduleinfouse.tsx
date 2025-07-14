@@ -31,17 +31,17 @@ const Moduleinfouse: React.FC<ModuleUserInfoProps> = ({ user, onClose }) => {
 
         <div className="space-y-4 text-sm text-gray-800">
           <div className="flex items-center gap-3">
-            <FaEnvelope className="text-[#9f7126]" />
+            <FaEnvelope className="text-[#2F855A]" />
             <span className="truncate">{user.email}</span>
           </div>
           <div className="flex items-center gap-3">
-            <FaRecycle className="text-[#9f7126]" />
+            <FaRecycle className="text-[#2F855A]" />
             <span>
               Déchets collectés : <strong>{user.dechets}</strong>
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <FaWallet className="text-[#9f7126]" />
+            <FaWallet className="text-[#2F855A]" />
             <span>
               Portefeuille : <strong>{user.wallet} Ar</strong>
             </span>

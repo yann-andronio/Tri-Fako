@@ -12,6 +12,7 @@ import Register from './auth/register/Registe'
 import Home from './pages/home/Home'
 import Dashboard from './pages/dashboard/Dashboard'
 import UtilisateurPage from './pages/utilisateurs/UtilisateurPage'
+import Historique from './pages/historique/Historique'
 
 const route = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const route = createBrowserRouter([
       {
         path: '/home/utilisateur',
         element: <UtilisateurPage />
+      },
+      {
+        path: '/home/historique',
+        element: <Historique />
       }
     ]
   }
