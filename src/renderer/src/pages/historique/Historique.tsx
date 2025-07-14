@@ -1,8 +1,6 @@
 import { JSX, useState } from 'react'
 import {
   FaUserCircle,
-  FaCheckCircle,
-  FaTimesCircle,
   FaMoneyBillWave,
   FaUsers,
   FaHistory
@@ -14,8 +12,7 @@ import ModuleHistoryRetrait from '@renderer/components/modulehistoryRetrait/Modu
 
 function Historique(): JSX.Element {
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
-  const usernanaoretraits = userData.filter((user) => user.retrait)
-  const [user] = useState(usernanaoretraits)
+  const [user] = useState(userData)
   const [searchuser, setsearchuser] = useState('')
    
   const handlesearchuser = (datauser: string) => {
@@ -69,49 +66,47 @@ function Historique(): JSX.Element {
           <h2 className="text-lg font-semibold text-[#2F855A] mb-4">Historique des retraits</h2>
 
           <ul className="divide-y divide-gray-200 text-sm">
-               {filtereusers.length === 0 ? (
+            {filtereusers.length === 0 ? (
               <div className="text-center py-6 text-gray-500 text-sm">Aucun utilisateur trouvé</div>
             ) : (
-            filtereusers.map((user, index) => (
-              <li
-                key={index}
-                className="py-3 flex items-center justify-between hover:bg-gray-50 px-2 rounded-md transition"
-              >
-                <div
-                  className="flex items-center gap-3 cursor-pointer"
+              filtereusers.map((user, index) => (
+                <li
+                  key={index}
+                  className="py-3 flex items-center justify-between hover:bg-gray-50 px-4 rounded-md transition cursor-pointer"
                   onClick={() => setSelectedUser(user)}
                 >
-                  <FaUserCircle className="text-[#2F855A]" size={22} />
-                  <div>
-                    <p className="font-semibold">
-                      {user.nom} {user.prenom}
-                    </p>
-                    <p className="text-xs text-gray-500">{user.retrait?.date}</p>
+                  <div className="flex items-center gap-3">
+                    <FaUserCircle className="text-[#2F855A]" size={22} />
+                    <div>
+                      <p className="font-semibold text-[#2F855A]">
+                        {user.nom} {user.prenom}
+                      </p>
+                      <p className="text-xs text-gray-600">
+                        Nombre de retraits :{' '}
+                        <span className="font-medium">{user.retraits?.length ?? 0}</span>
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex items-center gap-3">
-                  <span
-                    className={`font-bold ${
-                      user.retrait?.statut === 'accepté' ? 'text-[#2F855A]' : 'text-red-500'
-                    }`}
-                  >
-                    {user.retrait?.montant} Ar
-                  </span>
-
-                  {user.retrait?.statut === 'accepté' ? (
-                    <FaCheckCircle className="text-[#2F855A]" size={18} />
-                  ) : (
-                    <FaTimesCircle className="text-red-500" size={18} />
-                  )}
-                </div>
-              </li>
-            )))}
+                  <div className="text-sm font-semibold text-[#2F855A]">
+                    Total retiré :{' '}
+                    {user.retraits
+                      ? user.retraits
+                          .reduce((total, r) => total + r.montant, 0)
+                          .toLocaleString('fr-FR')
+                      : 0}{' '}
+                    Ar
+                  </div>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </div>
 
-{selectedUser && <ModuleHistoryRetrait user={selectedUser} onClose={() => setSelectedUser(null)} />}
+      {selectedUser && (
+        <ModuleHistoryRetrait user={selectedUser} onClose={() => setSelectedUser(null)} />
+      )}
     </div>
   )
 }

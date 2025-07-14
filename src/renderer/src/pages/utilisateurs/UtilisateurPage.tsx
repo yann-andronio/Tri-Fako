@@ -1,5 +1,5 @@
 import { JSX, useState } from 'react'
-import { FaDollarSign, FaEye, FaUserCircle } from 'react-icons/fa'
+import {  FaEye, FaUserCircle } from 'react-icons/fa'
 import { useFilterData } from '@renderer/hooks/useFilterData'
 import Searchbar from '@renderer/components/searchbar/Searchbar'
 import { userData } from '@renderer/data/Userdata'

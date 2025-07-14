@@ -1,3 +1,8 @@
+export type Retrait = {
+  montant: number
+  date: string
+}
+
 export type User = {
   nom: string
   prenom: string
@@ -5,11 +10,7 @@ export type User = {
   telephone?: string
   dechets: number
   wallet?: number
-  retrait?: {
-    montant: number
-    date: string
-    statut: 'accepté' | 'refusé'
-  }
+  retraits?: Retrait[]
 }
 
 export const userData: User[] = [
@@ -20,11 +21,14 @@ export const userData: User[] = [
     telephone: '034 12 345 67',
     dechets: 15,
     wallet: 0,
-    retrait: {
-      montant: 15000,
-      date: '08/07/2025',
-      statut: 'accepté'
-    }
+    retraits: [
+      { montant: 15000, date: '08/07/2025' },
+      { montant: 10000, date: '10/07/2025' },
+      { montant: 15000, date: '08/07/2025' },
+      { montant: 10000, date: '10/07/2025' },
+      { montant: 15000, date: '08/07/2025' },
+      { montant: 10000, date: '10/07/2025' },
+    ]
   },
   {
     nom: 'Rakoto',
@@ -33,11 +37,10 @@ export const userData: User[] = [
     telephone: '034 99 876 54',
     dechets: 8,
     wallet: 0,
-    retrait: {
-      montant: 20000,
-      date: '07/07/2025',
-      statut: 'refusé'
-    }
+    retraits: [
+      { montant: 15000, date: '08/07/2025' },
+      { montant: 10000, date: '10/07/2025' }
+    ]
   },
   {
     nom: 'Rasoa',
@@ -46,11 +49,7 @@ export const userData: User[] = [
     telephone: '032 45 678 90',
     dechets: 12,
     wallet: 0,
-    retrait: {
-      montant: 10000,
-      date: '06/07/2025',
-      statut: 'accepté'
-    }
+    retraits: [{ montant: 15000, date: '08/07/2025' }]
   },
   {
     nom: 'Rasoa',
@@ -59,11 +58,10 @@ export const userData: User[] = [
     telephone: '032 45 678 90',
     dechets: 12,
     wallet: 0,
-    retrait: {
-      montant: 10000,
-      date: '06/07/2025',
-      statut: 'accepté'
-    }
+    retraits: [
+      { montant: 15000, date: '08/07/2025' },
+      { montant: 10000, date: '10/07/2025' }
+    ]
   },
   {
     nom: 'Rasoa',
@@ -72,11 +70,10 @@ export const userData: User[] = [
     telephone: '032 45 678 90',
     dechets: 12,
     wallet: 0,
-    retrait: {
-      montant: 10000,
-      date: '06/07/2025',
-      statut: 'accepté'
-    }
+    retraits: [
+      { montant: 15000, date: '08/07/2025' },
+      { montant: 10000, date: '10/07/2025' }
+    ]
   },
   {
     nom: 'Rasoa',
@@ -85,10 +82,9 @@ export const userData: User[] = [
     telephone: '032 45 678 90',
     dechets: 12,
     wallet: 0,
-    retrait: {
-      montant: 10000,
-      date: '06/07/2025',
-      statut: 'accepté'
-    }
-  },
+    retraits: [
+      { montant: 15000, date: '08/07/2025' },
+      { montant: 10000, date: '10/07/2025' }
+    ]
+  }
 ]
